@@ -1,0 +1,6 @@
+# turn with [XYZ] axis [ANGLE] degrees to [SUM_ANGLE] degress
+[WHETHER_ROTATE] turn [XYZ] [ANGLE]
+# save image 
+center
+[WHETHER_SNAPSHOT] copy file [PDB_ID]_[XYZ][INDEX].png png dpi 600.0
+

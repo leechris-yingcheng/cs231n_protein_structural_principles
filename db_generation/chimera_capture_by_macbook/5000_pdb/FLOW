@@ -1,0 +1,53 @@
+scirpts are at: 
+/Users/user/chimera_for_cs231n/chimera_capture_by_macbook/5000_pdb
+
+
+perl Collect_PDB_Label.pl LIST_5000 (same as Homo_Sapien_Proteins_List_RCSB_PDB_5000.txt.tmp)
+output: pdb_label.txt 
+
+source sort_2nd_column > Sorted_pdb_label.txt 
+(sort -t $'\t' -k2,2 pdb_label.txt)
+output: Sorted_pdb_label.txt 
+
+perl Dense_labels_from_Sorted.pl Sorted_pdb_label.txt
+output: Sorted_Categories.txt 
+
+perl Separate_train_and_test.pl
+output: Train_sorted_list.txt  and  Test_sorted_list.txt
+
+source unsort_2nd_column > Final_pdb_label_with_category.txt 
+(sort -t $'\t' -k1,1 Train_sorted_list.txt > Train_final_list.txt 
+sort -t $'\t' -k1,1 Test_sorted_list.txt > Test_final_list.txt 
+actually sort 1st column)
+output: Train_Final_list.txt  and Test_Final_list.txt
+
+Final format: 
+pdb_id category_id (the "y" for nn) category_name pdb_description pdb_species(human) 
+
+so far, out of 5100 pdb proteins, there are 740 categories (seen from Sorted_Categories) 
+Train 4776  Test 324 (about 6%) 
+
+Test's 324 pdb, each in one category, 324 categories. Those are the categories that contain 
+more than one pdbs, and pdb picked is the 2nd on the sorted pdb list. 
+ 
+
+Copy into New Database directory, structure is: 
+train/category_id/*.png   
+test/category_id/*.png   
+such as 
+train/1/1NGW_x00.png 1NGW_x01.png 
+train/2/etc 
+
+perl Copy_png_to_category_dirs.pl Train_Final_list.txt Test_Final_list.txt ORIGINAL_DIR NEW_DATABASE_DIR
+
+ORIGINAL_DIR can be 
+PDB_SNAPSHOTS_DATABASE_5000_ATOMS, _RIBBON, _SURFACE
+
+NEW_DATABASE_DIR
+CS231N_PDB_SNAPSHOTS_5000_ATOMS, _RIBBON, _SURFACE
+
+such as:
+inside /Users/user/cs231n_Database_dir/
+
+perl Copy_png_to_category_dirs.pl Train_Final_list.txt Test_Final_list.txt /Volumes/mac_disk01/PDB_SNAPSHOTS_DATABASE_5000_ATOMS CS231N_PDB_SNAPSHOTS_DATABASE_5000_ATOMS
+ 

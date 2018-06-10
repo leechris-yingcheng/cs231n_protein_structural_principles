@@ -1,0 +1,28 @@
+#
+# snapshot protein surface every certain degrees
+# using UCSF Chimera
+# on PDB
+# 
+
+#open protein pdb file directly by ID
+open [PDB_ID]
+cd [PDB_DIR] 
+write #0 [PDB_ID].pdb
+close all
+open [PDB_ID]
+
+# no show ribbon 
+transparency 100,r 
+
+# show atoms 
+select all
+show 
+transparency 0,a
+
+# show surface, as mesh, as transparency 80%
+# coulombic -10 red 0 white 10 blue 
+rangecolor kdHydrophobicity,s -10 red 0 white 10 blue
+surfrepr mesh 
+surftransparency 80
+surface
+

@@ -1,0 +1,144 @@
+#
+# snapshot protein surface every 45 degrees
+#
+
+#open protein pdb file directly by ID
+open 3pqr
+
+#no show ribbon 
+transparency 100,r 
+
+#show atoms 
+select all
+show 
+
+#show surface, as mesh, as transparency 80%
+# coulombic -10 red 0 white 10 blue 
+rangecolor kdHydrophobicity,s -10 red 0 white 10 blue
+surfrepr mesh 
+surftransparency 80
+surface
+
+
+# turn with y axis 0 degrees 
+#turn y 0
+# save image 
+center
+copy file 3pqr_y0.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  45 degress
+turn y 45
+# save image 
+center
+copy file 3pqr_y1.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  90 degrees
+turn y 45
+# save image 
+center
+copy file 3pqr_y2.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  135 degrees
+turn y 45
+# save image 
+center
+copy file 3pqr_y3.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  180 degress
+turn y 45
+# save image 
+center
+copy file 3pqr_y4.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  225 degress
+turn y 45
+# save image 
+center
+copy file 3pqr_y5.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  270 degrees
+turn y 45
+# save image 
+center
+copy file 3pqr_y6.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  315 degrees
+turn y 45
+# save image 
+center
+copy file 3pqr_y7.png png dpi 600.0
+
+
+# turn with y axis 45 degrees to  360 degrees
+turn y 45
+# back to original 
+
+
+
+# turn with x axis 0 degrees 
+#turn x 0
+# save image 
+center
+copy file 3pqr_x0.png png dpi 600.0
+
+
+# turn with x axis 45 degrees to  45 degress
+turn x 45
+# save image 
+center
+copy file 3pqr_x1.png png dpi 600.0
+
+
+# turn with x axis 45 degrees to  90 degrees
+turn x 45
+# save image 
+center
+copy file 3pqr_x2.png png dpi 600.0
+
+
+# turn with x axis 45 degrees to  135 degrees
+turn x 45
+# save image 
+center
+copy file 3pqr_x3.png png dpi 600.0
+
+
+# turn with x axis 45 degrees to  180 degress
+turn x 45
+# save image 
+center
+copy file 3pqr_x4.png png dpi 600.0
+
+
+# turn with x axis 45 degrees to  225 degress
+turn x 45
+# save image 
+center
+copy file 3pqr_x5.png png dpi 600.0
+
+
+# turn with x axis 45 degrees to  270 degrees
+turn x 45
+# save image 
+center
+copy file 3pqr_x6.png png dpi 600.0
+
+
+# turn with x axis 45 degrees to  315 degrees
+turn x 45
+# save image 
+center
+copy file 3pqr_x7.png png dpi 600.0
+
+
+
+
+
+close all
